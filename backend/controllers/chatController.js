@@ -5,10 +5,6 @@ const chatWithLLM = async (req, res) => {
   try {
     const { message } = req.body;
 
-    if (!message) {
-      return res.status(400).json({ message: 'Message is required' });
-    }
-
     // Pass the message and user ID to the LLM service (handles logging & formatting)
     const formattedResponse = await llmService(req.user._id, message);
 
