@@ -1,91 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
 
-:root {
-  --background: #0f172a;
-  --foreground: #f8fafc;
-  --primary: #3b82f6;
-  --primary-hover: #2563eb;
-  --surface: rgba(30, 41, 59, 0.7);
-  --border: rgba(255, 255, 255, 0.1);
-  --input-bg: rgba(15, 23, 42, 0.6);
-  --accent: #8b5cf6;
+/* ========================================
+   MERIT GATE — Design System
+   Editorial design language: bold, uppercase,
+   alternating dark/light sections.
+   ======================================== */
+
+@theme {
+  /* Core Palette */
+  --color-base: #f4f5f5;
+  --color-deep-teal: #1C3334;
+  --color-muted-navy: #2F4454;
+  --color-burgundy: #2E151B;
+  --color-rose: #DA7B93;
+  --color-rose-dark: #c96a82;
+  --color-teal-muted: #376E6F;
+
+  /* Text */
+  --color-text-primary: #1C3334;
+  --color-text-body: #2F4454;
+  --color-text-muted: #376E6F;
+  --color-text-light: #f4f5f5;
+
+  /* Status */
+  --color-status-done: #10b981;
+  --color-status-pending: #f59e0b;
+  --color-status-processing: #3b82f6;
+  --color-status-failed: #ef4444;
+
+  /* Fonts */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', sans-serif;
-  min-height: 100vh;
-  background-image: 
-    radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-    radial-gradient(at 50% 0%, hsla(225,39%,30%,0.2) 0, transparent 50%), 
-    radial-gradient(at 100% 0%, hsla(339,49%,30%,0.2) 0, transparent 50%);
-  background-attachment: fixed;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  font-family: inherit;
-  transition: all 0.2s ease;
-}
-
-input {
-  font-family: inherit;
-}
-
-/* Utilities */
-.glass-panel {
-  background: var(--surface);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+/* Selection */
+::selection {
+  background: var(--color-rose);
   color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 500;
-  font-size: 1rem;
 }
 
-.btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.input-field {
-  width: 100%;
-  padding: 12px 16px;
-  background: var(--input-bg);
-  border: 1px solid var(--border);
-  color: white;
-  border-radius: 8px;
-  outline: none;
-  font-size: 1rem;
-  transition: border-color 0.2s;
-}
-
-.input-field:focus {
-  border-color: var(--primary);
-}
-
-/* Custom Scrollbar */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -93,13 +47,104 @@ input {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(28, 51, 52, 0.3);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(28, 51, 52, 0.5);
 }
 
-.metadata-container:hover .metadata-tooltip {
-  display: block !important;
+/* Spinner animation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Skeleton shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(28,51,52,0.08) 25%, rgba(28,51,52,0.15) 50%, rgba(28,51,52,0.08) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 6px;
+}
+
+.skeleton-dark {
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 6px;
+}
+
+/* Toast animation */
+@keyframes toast-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toast-out {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+
+/* Quill Editor Customization */
+.quill-custom .ql-toolbar {
+  border: none !important;
+  border-bottom: 1px solid rgba(28,51,52,0.1) !important;
+  background: rgba(244, 245, 245, 0.5);
+  font-family: var(--font-sans);
+}
+.quill-custom .ql-container {
+  border: none !important;
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  min-height: 16rem;
+  color: var(--color-text-body);
+}
+.quill-custom .ql-editor {
+  padding: 2rem;
+  line-height: 1.625;
+  min-height: 16rem;
+}
+.quill-custom .ql-editor.ql-blank::before {
+  color: rgba(47, 68, 84, 0.3);
+  font-style: normal;
+}
+.quill-custom .ql-editor ul {
+  padding-left: 0;
+}
+.quill-custom .ql-editor ul > li::before {
+  content: '•';
+  color: var(--color-rose);
+  font-weight: bold;
+}
+
+/* Rendered Quill Content */
+.quill-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.quill-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.quill-content p {
+  margin-bottom: 0.5rem;
+}
+
+/* ContentEditable Placeholder */
+.editable-rich-text:empty:before {
+  content: attr(data-placeholder);
+  color: rgba(47, 68, 84, 0.3);
+  pointer-events: none;
+  display: block;
 }
