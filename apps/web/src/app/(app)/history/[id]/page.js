@@ -177,7 +177,7 @@ export default function RunDetailPage() {
                             const sourceMem = run.sourceMemories?.find(m => m._id === sourceId);
                             return sourceMem ? (
                               <div key={sIdx} className="p-4 bg-white border border-deep-teal/10">
-                                <p className="text-sm text-text-body italic mb-3">"{sourceMem.rawBullet}"</p>
+                                <p className="text-sm text-text-body italic mb-3">&quot;{sourceMem.rawBullet}&quot;</p>
                                 <div className="flex items-center gap-2">
                                   {sourceMem.memoryType && (
                                     <span className="px-2 py-0.5 bg-burgundy/10 text-burgundy text-[10px] font-bold uppercase tracking-widest rounded-sm">

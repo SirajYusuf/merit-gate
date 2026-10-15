@@ -303,7 +303,7 @@ export default function TailorPage() {
                               const sourceMem = result.retrievedMemories?.find(m => m.memoryId === sourceId);
                               return sourceMem ? (
                                 <div key={sIdx} className="text-sm text-teal-muted italic">
-                                  "{sourceMem.rawBullet}"
+                                  &quot;{sourceMem.rawBullet}&quot;
                                 </div>
                               ) : null;
                             })}

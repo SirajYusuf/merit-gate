@@ -1,0 +1,27 @@
+node_modules/
+.env
+.env.*
+!.env.example
+!.env.*.example
+dist/
+build/
+coverage/
+.turbo/
+.DS_Store
+
+# Runtime uploads and local backend data
+apps/api/public/uploads/*
+!apps/api/public/uploads/.gitkeep
+
+# Next.js and frontend build artifacts
+.vercel
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*

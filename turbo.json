@@ -1,0 +1,32 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"],
+      "env": [
+        "NODE_ENV",
+        "PORT",
+        "MONGO_URI",
+        "JWT_SECRET",
+        "NEXT_PUBLIC_API_URL",
+        "REDIS_URL",
+        "GEMINI_API_KEY",
+        "GEMINI_EMBEDDING_MODEL",
+        "GEMINI_EMBEDDING_DIMENSIONS",
+        "MEMORY_VECTOR_INDEX",
+        "EMBEDDING_WORKER_CONCURRENCY"
+      ]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "test": {
+      "dependsOn": ["^test"]
+    }
+  }
+}
