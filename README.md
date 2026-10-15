@@ -13,12 +13,10 @@ Install pnpm 9+ and Node.js 20+, then run:
 
 ```sh
 pnpm install
-cp apps/api/.env.example apps/api/.env
-cp apps/web/.env.example apps/web/.env
 pnpm dev
 ```
 
-Set real credentials (`MONGO_URI`, `JWT_SECRET`, `GEMINI_API_KEY`, `REDIS_URL`) in `apps/api/.env`. Never commit `.env` files or credentials.
+Configure your environment variables in `apps/api/.env` and `apps/web/.env` (see the `.env.example` templates in each app for required keys). Never commit `.env` files or credentials.
 
 To run the background embedding worker alongside the API server:
 ```sh

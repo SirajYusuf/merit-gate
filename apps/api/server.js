@@ -20,10 +20,6 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./docs/openapi.json');
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/projects', require('./routes/projectRoutes'));
 app.use('/api/tailoring', require('./routes/tailoringRoutes'));
